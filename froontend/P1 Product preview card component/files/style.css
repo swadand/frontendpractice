@@ -7,10 +7,6 @@ body {
     color: hsl(228, 12%, 48%);
 }
 
-img {
-    border-top-left-radius: 4%;
-    border-bottom-left-radius: 4%;
-}
 
 h1 {
     font-family: Fraunces !important;
@@ -36,6 +32,7 @@ h1 {
     transform: translate(-50%, -50%);
     background-color: hsl(0, 0%, 100%);
     border-radius: 4%;
+    overflow: hidden;
 }
 
 .productImg {
@@ -121,4 +118,47 @@ h1 {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
+}
+
+@media only screen and (max-width: 600px)
+{
+
+    img {
+        width: 100%;
+        position: inherit;
+        bottom: 112px;
+    }
+
+    .cardContainer {
+        /*position: fixed;
+        flex-direction: row;
+        */
+        position: absolute;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: 600px;
+        width: 380px;
+        background-color: hsl(0, 0%, 100%);
+        border-radius: 4%;
+        overflow: hidden;
+    }
+
+    .productImg {
+        object-fit: none;
+        position: relative;
+        top: 0px;
+        display: block;
+        width: 100%;
+        height: 250px;
+        overflow: hidden;
+        padding: 0px 0px 5px 0px;
+    }
+
+    .productText {
+        padding-left: 20px;
+        padding-right: 25px;
+        padding-top: 20px;
+        width: 70%;
+    }
 }
