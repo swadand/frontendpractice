@@ -1,71 +1,148 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500&display=swap');
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/*
+    2. Remove default margin
+  */
+
+* {
+    margin: 0;
+}
+
+
+/*
+    3. Allow percentage-based heights in the application
+  */
+
+html,
+body {
+    height: 100%;
+}
+
+
+/*
+    Typographic tweaks!
+    4. Add accessible line-height
+    5. Improve text rendering
+  */
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/*
+    6. Improve media defaults
+  */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+
+/*
+    7. Remove built-in form typography styles
+  */
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+
+/*
+    8. Avoid text overflows
+  */
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+
+/*
+    9. Create a root stacking context
+  */
+
+#root,
+#__next {
+    isolation: isolate;
+}
+
 body {
     background-color: hsl(32, 37%, 92%);
     font-family: Montserrat;
     font-weight: 500;
+    font-size: .875rem;
     color: hsl(228, 12%, 48%);
+    display: grid;
+    place-content: center;
+    margin: 1rem;
 }
 
+.cardContainer {
+    background-color: hsl(0, 0%, 100%);
+    border-radius: .5rem;
+    overflow: hidden;
+    display: grid;
+    max-width: 600px;
+}
+
+@media (min-width:550px) {
+    .cardContainer {
+        grid-template-columns: 1fr 1fr;
+    }
+}
 
 h1 {
     font-family: Fraunces !important;
     font-weight: 900;
-    font-size: 28px;
-    line-height: 28px;
+    font-size: 2rem;
+    line-height: 2rem;
     color: hsl(212, 21%, 14%);
 }
 
-.cardContainer {
-    /*position: fixed;
-    flex-direction: row;
-    */
-    position: absolute;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 390px;
-    width: 500px;
-    top: 50%;
-    left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%);
-    background-color: hsl(0, 0%, 100%);
-    border-radius: 4%;
-    overflow: hidden;
-}
-
-.productImg {
-    height: 100%;
-    width: 50%;
-    align-self: center;
-    display: inline-flex;
-}
-
 .productText {
-    padding-left: 20px;
-    padding-right: 25px;
-    padding-top: 20px;
-    width: 40%;
+    padding: 1.5rem;
+    display: grid;
+    gap: .8rem;
 }
 
 .subheading {
+    font-size: .825rem;
+    letter-spacing: .2rem;
+    text-transform: uppercase;
     font-size: 10px;
 }
 
 .productDescription {
     font-weight: 400;
-    font-size: 12px;
-    padding-bottom: 20px;
+    font-size: 14px;
 }
 
 .price {
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    font-family: Fraunces;
-    padding-top: 20px;
-    gap: 20px;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 
 .discountPrice {
@@ -87,24 +164,28 @@ h1 {
     display: inline-flex;
 }
 
-.addTCBtn {
-    position: fixed;
-    margin: 20px 20px 0px 20px;
-    bottom: 30px;
-    height: 40px;
-    width: 180px;
+button {
     color: hsl(0, 0%, 100%);
     background-color: hsl(158, 36%, 37%);
-    border-radius: 6px;
-    display: flex;
-    gap: 10px;
+    border: 0ch;
+    border-radius: .2em;
+    text-decoration: none;
     justify-content: center;
-    justify-self: center;
+    display: inline-flex;
     align-items: center;
+    gap: .5rem;
+    padding: .75em 2em;
 }
 
-.addTCBtn:hover {
+button:hover {
     background-color: hsl(157, 38%, 15%);
+}
+
+button[data-icon="shoppingCart"]::before {
+    content: "";
+    background-image: url("./images/icon-cart.svg");
+    width: 15px;
+    height: 16px;
 }
 
 .attribution {
@@ -118,47 +199,4 @@ h1 {
 
 .attribution a {
     color: hsl(228, 45%, 44%);
-}
-
-@media only screen and (max-width: 600px)
-{
-
-    img {
-        width: 100%;
-        position: inherit;
-        bottom: 112px;
-    }
-
-    .cardContainer {
-        /*position: fixed;
-        flex-direction: row;
-        */
-        position: absolute;
-        display: flex;
-        flex-wrap: wrap;
-        flex-direction: row;
-        height: 600px;
-        width: 380px;
-        background-color: hsl(0, 0%, 100%);
-        border-radius: 4%;
-        overflow: hidden;
-    }
-
-    .productImg {
-        object-fit: none;
-        position: relative;
-        top: 0px;
-        display: block;
-        width: 100%;
-        height: 250px;
-        overflow: hidden;
-        padding: 0px 0px 5px 0px;
-    }
-
-    .productText {
-        padding-left: 20px;
-        padding-right: 25px;
-        padding-top: 20px;
-        width: 70%;
-    }
 }
